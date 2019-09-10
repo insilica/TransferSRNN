@@ -2,6 +2,8 @@
 
 Here is an explanation of the files in this repo.
 
+Discrete Survival Demo.ipynb - Notebook that shows whole process of building and running survival models on ws2. Takes a couple hours to run. In the end, it generates a plot similar to lossdiff_boxplot2.svg
+
 lossdiff_boxplot2.svg - Plot of difference between loss of respective fold and disease of baseline model and transfer model
 
 baseline_losses.csv - Loss values for each fold and disease for baseline models
