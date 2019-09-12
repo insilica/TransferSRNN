@@ -29,7 +29,8 @@ best_mut_feats.npy - Selected mutation features for building survival models
 
 
 To run Discrete Survival Demo.ipynb, run the following command to install dependencies in your environment:
-pip install -r requirements.txt
+
+`pip install -r requirements.txt`
 
 Next, in Discrete Survival Demo.ipynb's 2nd cell, cd to TransferSRNN directory which you git cloned.
 
