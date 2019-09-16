@@ -1,0 +1,18 @@
+
+# Druggable Genes
+Gets all the genes with associations to drugs from pharmGKB. Run on nov 16 2019 with data from https://www.pharmgkb.org/
+
+```{pharmGKB}
+geneDF <- read.csv("./genes/genes.tsv",sep="\t",stringsAsFactors = F) %>% 
+  select(Entity1_id = PharmGKB.Accession.Id, Ensembl.Id,Symbol)
+
+relDF <- read.csv("./relationships/relationships.tsv",sep="\t",stringsAsFactors = F) %>% 
+  filter(Entity1_type=="Gene") %>% 
+  filter(Entity2_type=="Chemical") %>% 
+  filter(Association=="associated")
+
+countDF <- relDF %>% group_by(Entity1_id) %>% summarize(numChemical = n_distinct(Entity2_id)) %>%
+  arrange(-numChemical) %>% inner_join(geneDF,by="Entity1_id")
+
+write.csv(countDF,"./druggableGenes.csv",row.names = F)
+```
