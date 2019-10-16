@@ -4,7 +4,7 @@ Here is an explanation of the files in this repo.
 
 Discrete Survival Demo.ipynb - Notebook that shows whole process of building and running survival models. Can be run in new environment after pip installing requirements.txt. Takes a couple hours to run. In the end, it generates a plot similar to lossdiff_boxplot2.svg
 
-lossdiff_boxplot2.svg - Plot of difference between loss of respective fold and disease of baseline model and transfer model
+lossdiff_boxplot.svg - Plot of difference between loss of respective fold and disease of baseline model and transfer model
 
 baseline_losses.csv - Loss values for each fold and disease for baseline models
 
@@ -18,13 +18,7 @@ specific_disease_feature_importance.csv - Feature importance table for each spec
 
 requirements.txt - Python dependencies to be installed in new environment
 
-clinical3.csv - DataFrame with GDC patient ID's
-
-df.csv - DataFrame with patients and features
-
 nnet_survival.py - Python file containing survival model functions
-
-best_mut_feats.npy - Selected mutation features for building survival models
 
 
 
