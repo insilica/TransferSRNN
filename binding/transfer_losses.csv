@@ -1,0 +1,171 @@
+fold,disease,loss
+0,Liver Hepatocellular Carcinoma,1.0228844629207128
+0,Lung Squamous Cell Carcinoma,1.8561409711837769
+0,Lung Adenocarcinoma,1.1494453350702922
+0,Brain Lower Grade Glioma,0.7475005145539942
+0,Kidney Renal Clear Cell Carcinoma,1.160047039618859
+0,Head and Neck Squamous Cell Carcinoma,1.5398533079359267
+0,Thyroid Carcinoma,0.3723618774251504
+0,Breast Invasive Carcinoma,0.6275327767013873
+0,Bladder Urothelial Carcinoma,1.515956582902353
+0,Kidney Renal Papillary Cell Carcinoma,0.5258804714238202
+0,Colon Adenocarcinoma,1.111078462600708
+0,Stomach Adenocarcinoma,1.7551566853242762
+0,Uterine Corpus Endometrial Carcinoma,0.8636266958145868
+0,Skin Cutaneous Melanoma,2.8504995885102646
+0,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,0.9211317471095494
+0,Prostate Adenocarcinoma,0.29574977185415185
+0,Ovarian Serous Cystadenocarcinoma,2.2073019509221994
+1,Liver Hepatocellular Carcinoma,1.1164927583345226
+1,Lung Squamous Cell Carcinoma,1.8202731609344482
+1,Lung Adenocarcinoma,1.4107781558768036
+1,Brain Lower Grade Glioma,0.8776751975623929
+1,Kidney Renal Clear Cell Carcinoma,0.9210970202317604
+1,Head and Neck Squamous Cell Carcinoma,1.5016584327124587
+1,Thyroid Carcinoma,0.22236763482744043
+1,Breast Invasive Carcinoma,0.7789093558750455
+1,Bladder Urothelial Carcinoma,1.6381907340807793
+1,Kidney Renal Papillary Cell Carcinoma,0.8148376075726635
+1,Colon Adenocarcinoma,1.4674389123916627
+1,Stomach Adenocarcinoma,1.0698233912972843
+1,Uterine Corpus Endometrial Carcinoma,0.9052148228599912
+1,Skin Cutaneous Melanoma,1.9619391528508996
+1,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,0.8620112112590245
+1,Prostate Adenocarcinoma,0.20435271574103314
+1,Ovarian Serous Cystadenocarcinoma,1.6780292473587335
+2,Liver Hepatocellular Carcinoma,1.2095104019406815
+2,Lung Squamous Cell Carcinoma,1.8768566307268644
+2,Lung Adenocarcinoma,1.263262769790611
+2,Brain Lower Grade Glioma,0.7185104606077843
+2,Kidney Renal Clear Cell Carcinoma,1.094845181474319
+2,Head and Neck Squamous Cell Carcinoma,1.7470315234227614
+2,Thyroid Carcinoma,0.325496259060773
+2,Breast Invasive Carcinoma,0.7563230534079214
+2,Bladder Urothelial Carcinoma,1.6868520854394646
+2,Kidney Renal Papillary Cell Carcinoma,0.5814332365989685
+2,Colon Adenocarcinoma,1.1721110582351684
+2,Stomach Adenocarcinoma,1.2812528983870548
+2,Uterine Corpus Endometrial Carcinoma,0.933769923164731
+2,Skin Cutaneous Melanoma,1.9115513563156128
+2,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.1827083570616586
+2,Prostate Adenocarcinoma,0.03617817892328552
+2,Ovarian Serous Cystadenocarcinoma,2.2828128711850035
+3,Liver Hepatocellular Carcinoma,1.1491603578839984
+3,Lung Squamous Cell Carcinoma,1.6647524369390387
+3,Lung Adenocarcinoma,1.5640621331273292
+3,Brain Lower Grade Glioma,1.044075680022337
+3,Kidney Renal Clear Cell Carcinoma,1.013496463573896
+3,Head and Neck Squamous Cell Carcinoma,1.5882437800367672
+3,Thyroid Carcinoma,0.34299382838335907
+3,Breast Invasive Carcinoma,0.7836978675196411
+3,Bladder Urothelial Carcinoma,1.5922214788726614
+3,Kidney Renal Papillary Cell Carcinoma,0.7593976457913717
+3,Colon Adenocarcinoma,1.353504285812378
+3,Stomach Adenocarcinoma,1.2903986884586847
+3,Uterine Corpus Endometrial Carcinoma,0.8470643826893398
+3,Skin Cutaneous Melanoma,2.3673453100265993
+3,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,0.8167520250592913
+3,Prostate Adenocarcinoma,0.16669630194487778
+3,Ovarian Serous Cystadenocarcinoma,2.576271662525102
+4,Liver Hepatocellular Carcinoma,1.2048733353614807
+4,Lung Squamous Cell Carcinoma,2.1352179935298015
+4,Lung Adenocarcinoma,1.234797708842219
+4,Brain Lower Grade Glioma,0.9239015615716273
+4,Kidney Renal Clear Cell Carcinoma,1.170359028302706
+4,Head and Neck Squamous Cell Carcinoma,1.779444528348518
+4,Thyroid Carcinoma,0.6781896136023782
+4,Breast Invasive Carcinoma,0.8062478278679822
+4,Bladder Urothelial Carcinoma,2.23609671411635
+4,Kidney Renal Papillary Cell Carcinoma,0.6351889393947743
+4,Colon Adenocarcinoma,0.9605860598882039
+4,Stomach Adenocarcinoma,1.4378459874321432
+4,Uterine Corpus Endometrial Carcinoma,0.9172970749083019
+4,Skin Cutaneous Melanoma,2.6746297089949898
+4,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.0886478424072266
+4,Prostate Adenocarcinoma,0.2868487196771995
+4,Ovarian Serous Cystadenocarcinoma,2.071347813980252
+5,Liver Hepatocellular Carcinoma,1.4329429047448294
+5,Lung Squamous Cell Carcinoma,1.7812616034557944
+5,Lung Adenocarcinoma,1.439600056531478
+5,Brain Lower Grade Glioma,0.861666319321613
+5,Kidney Renal Clear Cell Carcinoma,1.1111420448009783
+5,Head and Neck Squamous Cell Carcinoma,1.8427190094283132
+5,Thyroid Carcinoma,0.43164438009262085
+5,Breast Invasive Carcinoma,0.6067814997264317
+5,Bladder Urothelial Carcinoma,1.7622649394548857
+5,Kidney Renal Papillary Cell Carcinoma,0.871419937522323
+5,Colon Adenocarcinoma,1.2603946860631308
+5,Stomach Adenocarcinoma,1.670492018892694
+5,Uterine Corpus Endometrial Carcinoma,0.7282455977939424
+5,Skin Cutaneous Melanoma,2.2958705870659797
+5,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.2390777042933874
+5,Prostate Adenocarcinoma,0.09611268017603003
+5,Ovarian Serous Cystadenocarcinoma,2.1049300315333346
+6,Liver Hepatocellular Carcinoma,1.3727127565464503
+6,Lung Squamous Cell Carcinoma,1.9153725306193035
+6,Lung Adenocarcinoma,1.6311613070337396
+6,Brain Lower Grade Glioma,1.0336827232825512
+6,Kidney Renal Clear Cell Carcinoma,0.9193855050664682
+6,Head and Neck Squamous Cell Carcinoma,1.969788954715536
+6,Thyroid Carcinoma,0.09831996566869995
+6,Breast Invasive Carcinoma,0.8742819393753375
+6,Bladder Urothelial Carcinoma,1.8453758547577677
+6,Kidney Renal Papillary Cell Carcinoma,0.5755071419256704
+6,Colon Adenocarcinoma,1.216020517349243
+6,Stomach Adenocarcinoma,1.5659705329297193
+6,Uterine Corpus Endometrial Carcinoma,0.6125855812659631
+6,Skin Cutaneous Melanoma,2.401428757133065
+6,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.031038693019322
+6,Prostate Adenocarcinoma,0.15671503803004388
+6,Ovarian Serous Cystadenocarcinoma,1.9229474207934212
+7,Liver Hepatocellular Carcinoma,1.4435909633905115
+7,Lung Squamous Cell Carcinoma,2.0173157453536987
+7,Lung Adenocarcinoma,1.3814924030887836
+7,Brain Lower Grade Glioma,0.8682328711967079
+7,Kidney Renal Clear Cell Carcinoma,0.9042172312736512
+7,Head and Neck Squamous Cell Carcinoma,1.994764362019722
+7,Thyroid Carcinoma,0.3230476000092246
+7,Breast Invasive Carcinoma,0.9753193123630746
+7,Bladder Urothelial Carcinoma,1.5912137891672835
+7,Kidney Renal Papillary Cell Carcinoma,0.9127809648160581
+7,Colon Adenocarcinoma,1.3861558373769125
+7,Stomach Adenocarcinoma,1.363022725690495
+7,Uterine Corpus Endometrial Carcinoma,0.8756795023168836
+7,Skin Cutaneous Melanoma,2.2804878022935657
+7,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.031457475253514
+7,Prostate Adenocarcinoma,0.2944953558237656
+7,Ovarian Serous Cystadenocarcinoma,2.2598466873168945
+8,Liver Hepatocellular Carcinoma,1.3514648209994948
+8,Lung Squamous Cell Carcinoma,1.9487334976894493
+8,Lung Adenocarcinoma,1.5408705314811395
+8,Brain Lower Grade Glioma,0.9407164593486442
+8,Kidney Renal Clear Cell Carcinoma,1.1982995904408968
+8,Head and Neck Squamous Cell Carcinoma,1.6195814711878997
+8,Thyroid Carcinoma,0.3441366932608865
+8,Breast Invasive Carcinoma,0.7041674991133352
+8,Bladder Urothelial Carcinoma,1.8125586992577662
+8,Kidney Renal Papillary Cell Carcinoma,0.6237928911491677
+8,Colon Adenocarcinoma,0.9434546995162963
+8,Stomach Adenocarcinoma,1.581983076881117
+8,Uterine Corpus Endometrial Carcinoma,0.7383510941550845
+8,Skin Cutaneous Melanoma,1.9872782361376418
+8,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.1943332297461373
+8,Prostate Adenocarcinoma,0.0941736351536668
+8,Ovarian Serous Cystadenocarcinoma,2.160955076124154
+9,Liver Hepatocellular Carcinoma,1.3177345722493992
+9,Lung Squamous Cell Carcinoma,1.4692472371649234
+9,Lung Adenocarcinoma,1.474190394083659
+9,Brain Lower Grade Glioma,0.6555341831883605
+9,Kidney Renal Clear Cell Carcinoma,0.9744948944220176
+9,Head and Neck Squamous Cell Carcinoma,1.5703838136461046
+9,Thyroid Carcinoma,0.36415829814293166
+9,Breast Invasive Carcinoma,0.6491282131306078
+9,Bladder Urothelial Carcinoma,1.6676763632358649
+9,Kidney Renal Papillary Cell Carcinoma,0.6852892372343276
+9,Colon Adenocarcinoma,1.0620227861404419
+9,Stomach Adenocarcinoma,1.3574831205255844
+9,Uterine Corpus Endometrial Carcinoma,0.5099001515370148
+9,Skin Cutaneous Melanoma,1.9633505655371624
+9,Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma,1.005374244281224
+9,Prostate Adenocarcinoma,0.2592182755470276
+9,Ovarian Serous Cystadenocarcinoma,1.9400120950212665
