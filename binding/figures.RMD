@@ -1,0 +1,101 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+# Feature importance
+```{r}
+library(magrittr)
+library(dplyr)
+library(biomaRt)
+
+diseaseImportance <- local({
+  df <- read.csv("../transfer_feature_importance.csv",sep=",") %>% 
+  set_colnames(c("loss","feature"))
+
+  globDF <- read.csv("./global_feature_importance.csv",stringsAsFactors = F) %>% 
+    set_colnames(c("glob_loss","feature"))
+  
+  diseaseDF <- read.csv("./ind_disease_transfer_feature_importance.csv",stringsAsFactors = F) %>% 
+    set_colnames(c("loss","feature","disease"))
+  
+  df <- diseaseDF %>% inner_join(globDF,by=c("feature")) %>% 
+    mutate(relImp = loss - glob_loss) %>% 
+    mutate(type = ifelse(grepl("ENSG.*",feature),"expression",ifelse(grepl("mut",feature),"mutation","clinical"))) %>%
+    mutate(feature = ifelse(type=="expression",substr(feature,0,15),feature))
+  
+  mart       = useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl")
+  allAtts    <- atts <- biomaRt::listAttributes(mart)
+  atts       <- c("ensembl_gene_id","hgnc_symbol")
+  ensembls   <- df %>% filter(type=="expression") %>% (function(df){df$feature}) %>% unique()
+  bmDF       <- getBM(attributes = atts, filters = "ensembl_gene_id", values=ensembls, mart = mart)
+  bmDF       <- bmDF %>% set_colnames(c("feature","hgnc"))
+  detach("package:biomaRt", unload=TRUE)
+  
+  library(stringr)
+  df2 <- df %>% left_join(bmDF,"feature") %>% mutate(hgnc = ifelse(type=="mutation",str_sub(feature,end=-5),hgnc))
+  df2
+})
+
+```
+
+## GBM prostate and breast
+```{r GBM Prostate and breast}
+plotDF <- diseaseImportance %>% 
+  filter(disease %in% c("Brain Lower Grade Glioma","Prostate Adenocarcinoma","Breast Invasive Carcinoma")) %>%
+  mutate(feature = ifelse(type!="clinical",hgnc,feature)) %>% filter(!grepl("disease_code*",feature)) 
+
+globDF  <- plotDF %>% select(feature,loss=glob_loss,type,hgnc) %>% distinct() %>% 
+  group_by(type) %>% arrange(loss)  %>% top_n(6,wt =loss) %>% arrange(type,-loss)
+
+brainDF <- plotDF %>% filter(disease == "Brain Lower Grade Glioma") %>% 
+  select(feature,type,glob_loss,loss,diff_imp = relImp) %>% filter(glob_loss>0,diff_imp > 0) %>% 
+  group_by(type) %>% top_n(6,wt = loss) %>% arrange(type,-loss)
+
+prostDF <- plotDF %>% filter(disease == "Prostate Adenocarcinoma") %>% 
+  select(feature,type,glob_loss,loss,diff_imp = relImp) %>% filter(glob_loss>0,diff_imp > 0) %>% 
+  group_by(type) %>% top_n(6,wt=loss) %>% arrange(type,-loss)
+
+
+
+breastDF <- plotDF %>% filter(disease == "Breast Invasive Carcinoma") %>% 
+  select(feature,type,glob_loss,loss,diff_imp = relImp) %>% filter(glob_loss>0,diff_imp > 0) %>% arrange(-loss) %>% 
+  group_by(type) %>% top_n(6) %>% arrange(type,-loss)
+```
+
+# Drug importance
+
+## Global
+```{r}
+relDF <- read.csv("./relationships/relationships.tsv",sep="\t",stringsAsFactors = F) %>% 
+  filter(Entity1_type=="Gene",Entity2_type=="Chemical",Association=="associated") %>% 
+  set_colnames(c("id1","hgnc","type1","id2","chemName","type2","evidence","association","PK","PD","PMIDs"))
+
+globDF <- diseaseImportance %>% select(loss=glob_loss,hgnc,type) %>% distinct()
+
+drugDF <- globDF %>% inner_join(relDF,by="hgnc") %>% filter(nchar(PMIDs)>5)  %>% 
+  select(chemName,hgnc,loss) %>% distinct() %>% group_by(chemName) %>% 
+  top_n(3,wt=loss) %>% summarize(sumImportance=sum(loss),genes = paste(hgnc,collapse=","))
+```
+
+## Disease specific
+```{r}
+brainDrug <- diseaseImportance %>% filter(disease=="Brain Lower Grade Glioma") %>% 
+  inner_join(relDF,by="hgnc") %>% group_by(chemName) %>% 
+  top_n(3,wt=loss) %>% summarize(sumImportance=sum(loss),genes = paste(hgnc,collapse=","))
+
+prostateDrug <- diseaseImportance %>% filter(disease=="Prostate Adenocarcinoma") %>% 
+  inner_join(relDF,by="hgnc") %>% group_by(chemName) %>% 
+  top_n(3,wt=loss) %>% summarize(sumImportance=sum(loss),genes = paste(hgnc,collapse=","))
+```
+
+
+
+
+
+
+
+
+
