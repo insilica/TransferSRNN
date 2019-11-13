@@ -20,6 +20,10 @@ requirements.txt - Python dependencies to be installed in new environment
 
 nnet_survival.py - Python file containing survival model functions
 
+genes_pubmedcounts_glioma.csv - Table of gene names and number of PubMed articles regarding the gene. Articles restricted to those listed when searching for glioma MeSH term.
+
+genes_pubmedcounts_prostate.csv - Table of gene names and number of PubMed articles regarding the gene. Articles restricted to those listed when searching for prostatic neoplasm MeSH term.
+
 
 
 To run Discrete Survival Demo.ipynb, run the following command to install dependencies in your environment:
