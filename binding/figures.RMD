@@ -59,10 +59,22 @@ prostDF <- plotDF %>% filter(disease == "Prostate Adenocarcinoma") %>%
   group_by(type) %>% top_n(6,wt=loss) %>% arrange(type,-loss)
 
 
-
 breastDF <- plotDF %>% filter(disease == "Breast Invasive Carcinoma") %>% 
   select(feature,type,glob_loss,loss,diff_imp = relImp) %>% filter(glob_loss>0,diff_imp > 0) %>% arrange(-loss) %>% 
   group_by(type) %>% top_n(6) %>% arrange(type,-loss)
+```
+
+### gene publication
+```{r}
+brainDF <- plotDF %>% filter(disease == "Brain Lower Grade Glioma") %>% 
+  select(hgnc,glob_loss,loss,diff_imp = relImp) %>% 
+  filter(glob_loss>0,diff_imp > 0) %>% 
+  filter(!is.na(hgnc),nchar(hgnc) > 0) %>% 
+  group_by(hgnc) %>% summarize(loss=max(loss)) %>% arrange(-loss)
+
+gliomaPub <- read.csv("../genes_pubmedcounts_glioma.csv",header=T,stringsAsFactors = F) %>%
+  set_colnames(c("row","ensembl","count","hgnc")) %>% select(hgnc,pubcount=count) %>%
+  inner_join(brainDF,by=c("hgnc"="feature")) %>% mutate(pubcount = ifelse(is.na(pubcount),0,pubcount))
 ```
 
 # Drug importance
