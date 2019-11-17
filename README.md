@@ -24,6 +24,10 @@ genes_pubmedcounts_glioma.csv - Table of gene names and number of PubMed article
 
 genes_pubmedcounts_prostate.csv - Table of gene names and number of PubMed articles regarding the gene. Articles restricted to those listed when searching for prostatic neoplasm MeSH term.
 
+genes_pubmedcounts_breast.csv - Table of gene names and number of PubMed articles regarding the gene. Articles restricted to those listed when searching for breast neoplasm MeSH term.
+
+generatePubMedCounts.R - R Script used to generate genes_pubmedcounts_breast.csv as an example. Similar to other diseases. 
+
 
 
 To run Discrete Survival Demo.ipynb, run the following command to install dependencies in your environment:
