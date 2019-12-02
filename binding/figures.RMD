@@ -42,7 +42,7 @@ diseaseImportance <- local({
 
 ```
 
-# Find oncogene avg importance
+# Find hallmark importance
 ```{r}
 library(msigdbr)
 msigDF  <- msigdbr(species="Homo sapiens", category = "H") 
