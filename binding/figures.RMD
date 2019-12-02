@@ -11,6 +11,7 @@ library(magrittr)
 library(dplyr)
 library(biomaRt)
 
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 diseaseImportance <- local({
   df <- read.csv("../transfer_feature_importance.csv",sep=",") %>% 
   set_colnames(c("loss","feature"))
@@ -41,6 +42,21 @@ diseaseImportance <- local({
 
 ```
 
+# Find oncogene avg importance
+```{r}
+library(msigdbr)
+msigDF  <- msigdbr(species="Homo sapiens", category = "H") 
+msigDF2 <- msigDF %>% select(hgnc=human_gene_symbol,gs_name) %>% unique()
+df <- diseaseImportance %>% group_by(hgnc) %>% summarize(maxloss=max(glob_loss)) %>% 
+  inner_join(msigDF2, by="hgnc") %>% mutate(gs_name = ifelse(is.na(gs_name),"out",gs_name)) %>% 
+  filter(nchar(hgnc)>2) 
+
+medloss <- median(df$maxloss)
+df2 <- df %>% group_by(gs_name) %>% summarize(tot=n(),imp = sum(maxloss > medloss)) %>% mutate(imp_prev=imp/tot)
+
+ggplot(df,aes(x=reorder(gs_name,loss),y=maxloss)) + geom_boxplot() + coord_flip()
+```
+
 ## GBM prostate and breast
 ```{r GBM Prostate and breast}
 plotDF <- diseaseImportance %>% 
@@ -66,15 +82,47 @@ breastDF <- plotDF %>% filter(disease == "Breast Invasive Carcinoma") %>%
 
 ### gene publication
 ```{r}
-brainDF <- plotDF %>% filter(disease == "Brain Lower Grade Glioma") %>% 
-  select(hgnc,glob_loss,loss,diff_imp = relImp) %>% 
-  filter(glob_loss>0,diff_imp > 0) %>% 
+brainDF <- plotDF %>% filter(disease == "Brain Lower Grade Glioma") %>% filter(type=="mutation") %>% 
+  dplyr::select(hgnc,glob_loss,loss,diff_imp = relImp) %>% 
+  filter(glob_loss>0) %>%
   filter(!is.na(hgnc),nchar(hgnc) > 0) %>% 
-  group_by(hgnc) %>% summarize(loss=max(loss)) %>% arrange(-loss)
+  group_by(hgnc) %>% summarize(loss=max(loss)) %>% arrange(-loss) %>% (function(df){
+    df %>% mutate(percentile = 1 - row_number()/nrow(df))
+  }) 
 
-gliomaPub <- read.csv("../genes_pubmedcounts_glioma.csv",header=T,stringsAsFactors = F) %>%
-  set_colnames(c("row","ensembl","count","hgnc")) %>% select(hgnc,pubcount=count) %>%
-  inner_join(brainDF,by=c("hgnc"="feature")) %>% mutate(pubcount = ifelse(is.na(pubcount),0,pubcount))
+brainPub <- read.csv("../genes_pubmedcounts_glioma.csv",header=T,stringsAsFactors = F) %>%
+  set_colnames(c("row","ensembl","count","hgnc")) %>% dplyr::select(hgnc,pubcount=count) 
+
+brainJoin <- brainPub %>% 
+  inner_join(prostDF,by="hgnc") %>% mutate(pubcount = ifelse(is.na(pubcount),0,pubcount)) %>% 
+  mutate(hiPub = pubcount > 50, hiLoss = percentile > 0.75)
+
+tbl = table(prostJoin$hiPub,prostJoin$hiLoss)
+tbl
+chisq.test(tbl)
+# p(high percentile | high publication) vs p (high percentile | low publication) = 16 / 66 vs 90 / 464
+```
+
+```{r}
+prostDF <- plotDF %>% filter(disease == "Prostate Adenocarcinoma") %>% filter(type=="mutation") %>% 
+  dplyr::select(hgnc,glob_loss,loss,diff_imp = relImp) %>% 
+  filter(glob_loss>0) %>%
+  filter(!is.na(hgnc),nchar(hgnc) > 0) %>% 
+  group_by(hgnc) %>% summarize(loss=max(loss)) %>% arrange(-loss) %>% (function(df){
+    df %>% mutate(percentile = 1 - row_number()/nrow(df))
+  }) 
+
+prostPub <- read.csv("../genes_pubmedcounts_prostate.csv",header=T,stringsAsFactors = F) %>%
+  set_colnames(c("row","ensembl","count","hgnc")) %>% dplyr::select(hgnc,pubcount=count) 
+
+prostJoin <- prostPub %>% 
+  inner_join(prostDF,by="hgnc") %>% mutate(pubcount = ifelse(is.na(pubcount),0,pubcount)) %>% 
+  mutate(hiPub = pubcount > 50, hiLoss = percentile > 0.75)
+
+tbl = table(prostJoin$hiPub,prostJoin$hiLoss)
+tbl
+chisq.test(tbl)
+# p(high percentile | high publication) vs p (high percentile | low publication) 6 / 11 vs 9 / 68
 ```
 
 # Drug importance
